@@ -19,5 +19,15 @@ export default tseslint.config(
       ecmaVersion: 2020,
       globals: globals.node,
     },
+
+    rules: {
+      '@typescript-eslint/consistent-type-imports': [
+        'error',
+        {
+          prefer: 'type-imports',
+          fixStyle: 'separate-type-imports',
+        },
+      ],
+    },
   }
 );
