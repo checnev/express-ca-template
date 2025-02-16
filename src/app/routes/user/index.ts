@@ -1,7 +1,10 @@
 import { Router } from 'express';
-import { userController } from '@/features/user/controller/user.controller';
+import { UserController } from '@/features/user/controller/user.controller';
+import { createUserUseCase, getUserByIdUseCase } from '@/app/providers/di';
 
 export const userRouter = Router();
 
-userRouter.post('/', userController.create);
-userRouter.get('/:id', userController.getById);
+const controller = new UserController(createUserUseCase, getUserByIdUseCase);
+
+userRouter.post('/', controller.create);
+userRouter.get('/:id', controller.getById);
